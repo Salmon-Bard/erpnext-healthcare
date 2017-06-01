@@ -42,20 +42,18 @@ frappe.ui.form.on('Patient', {
 });
 
 frappe.ui.form.on("Patient", "dob", function(frm) {
-	  if(frm.doc.dob){
-	    today = new Date();
-	    birthDate = new Date(frm.doc.dob);
-	    if(today < birthDate){
-	      msgprint("Please select a valid Date");
-	      frappe.model.set_value(frm.doctype,frm.docname, "dob", "");
-	    }
-	    else{
-	      age_str = get_age(frm.doc.dob);
-	      $(frm.fields_dict['age_html'].wrapper).html("AGE : " + age_str);
-	    }
-	  }
-	}
-});
+  if(frm.doc.dob){
+    today = new Date();
+    birthDate = new Date(frm.doc.dob);
+    if(today < birthDate){
+      msgprint("Please select a valid Date");
+      frappe.model.set_value(frm.doctype,frm.docname, "dob", "");
+    }
+    else{
+      age_str = get_age(frm.doc.dob);
+      $(frm.fields_dict['age_html'].wrapper).html("AGE : " + age_str);
+    }
+  }
 });
 
 var create_medical_record = function (frm) {
